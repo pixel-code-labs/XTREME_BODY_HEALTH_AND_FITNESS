@@ -1,0 +1,32 @@
+/* Smooth Scroll Behaviour */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Webkit Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #dc2626;
+}
+
+/* Schedule Card Micro-interactions */
+.schedule-card {
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.schedule-card:hover {
+  transform: translateY(-2px);
+  border-color: #dc2626;
+}

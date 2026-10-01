@@ -1,0 +1,42 @@
+name: Auto Release on Tag
+
+on:
+  push:
+    tags:
+      - 'v*' # Triggers automatically whenever you push a tag starting with 'v' (e.g., v1.0.1, v1.1.0)
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Required to create releases and upload assets
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Package Site Source into Zip
+        run: |
+          zip -r xtreme-gym-${{ github.ref_name }}.zip index.html style.css script.js README.md
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          body: |
+            ## 🏋️ Xtreme Gym Web App Release ${{ github.ref_name }}
+            
+            Automated production build deployment.
+            
+            ### Included Files:
+            - `index.html`
+            - `style.css`
+            - `script.js`
+            - `README.md`
+            
+            🌐 **Live Preview:** https://pixel-code-labs.github.io/client-xtreme-gym/
+          draft: false
+          prerelease: false
+          files: |
+            xtreme-gym-${{ github.ref_name }}.zip

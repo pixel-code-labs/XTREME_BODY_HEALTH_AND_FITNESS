@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Xtreme Gym | Multi-Location Fitness Center</title>
+  <meta name="description" content="Explore Xtreme Gym locations, view localized class schedules, and connect directly with our certified training team." />
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Local Business SEO Schema (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ExerciseGym",
+    "name": "Xtreme Gym",
+    "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48",
+    "hasMap": "https://maps.app.goo.gl/fQ7EiaXLN5NbWVif7",
+    "telephone": "+1-800-555-0199",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "124 Central Ave",
+      "addressLocality": "Downtown",
+      "addressCountry": "US"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    }
+  }
+  </script>
+</head>
+<body class="bg-zinc-950 text-zinc-100 font-sans antialiased pb-20 md:pb-0">
+
+  <!-- Navigation Header -->
+  <header class="sticky top-0 z-40 bg-zinc-900/90 backdrop-blur border-b border-zinc-800">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="text-2xl font-black italic tracking-wider text-red-600 flex items-center gap-1">
+        XTREME<span class="text-white">GYM</span>
+      </a>
+
+      <!-- Branch Switcher Dropdown -->
+      <div class="flex items-center gap-2 bg-zinc-800 px-3 py-1.5 rounded-lg border border-zinc-700">
+        <svg class="w-4 h-4 text-red-500 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"/>
+        </svg>
+        <select id="branchSelect" class="bg-transparent text-xs md:text-sm font-semibold focus:outline-none cursor-pointer text-white">
+          <option value="downtown" class="bg-zinc-900">Branch 1: Downtown HQ</option>
+          <option value="uptown" class="bg-zinc-900">Branch 2: Uptown Fitness Hub</option>
+          <option value="metro" class="bg-zinc-900">Branch 3: North Metro Arena</option>
+        </select>
+      </div>
+
+      <!-- Header Action -->
+      <a href="#contact" class="hidden md:inline-block bg-red-600 hover:bg-red-700 text-white text-sm font-bold py-2.5 px-5 rounded-lg transition">
+        Contact Studio
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative py-12 md:py-20 px-4 max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+    <div>
+      <span class="inline-block px-3 py-1 bg-red-600/20 text-red-500 border border-red-500/30 rounded-full text-xs font-bold uppercase tracking-widest mb-4">
+        Multi-Location Facility Access
+      </span>
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight uppercase leading-none mb-6">
+        Built For Real <br/><span class="text-red-600">Performance</span>
+      </h1>
+      <p class="text-zinc-400 text-base md:text-lg mb-8 leading-relaxed">
+        State-of-the-art strength training gear, group conditioning classes, and recovery zones engineered to help you meet your fitness goals.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="#schedule" class="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-xl text-center transition">
+          View Class Schedule
+        </a>
+        <a id="mapDirectBtn" href="https://maps.app.goo.gl/fQ7EiaXLN5NbWVif7" target="_blank" rel="noopener noreferrer" class="border border-zinc-700 hover:bg-zinc-800 text-zinc-200 font-bold py-4 px-8 rounded-xl text-center flex items-center justify-center gap-2 transition">
+          <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20"><path d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"/></svg>
+          Open In Google Maps
+        </a>
+      </div>
+    </div>
+
+    <!-- Dynamic Branch Preview Card -->
+    <div class="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden shadow-2xl">
+      <div class="relative h-64 overflow-hidden">
+        <img id="branchImage" src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80" alt="Xtreme Gym Branch" class="w-full h-full object-cover transition-all duration-300" />
+        <div class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-transparent to-transparent"></div>
+        <span id="branchStatus" class="absolute top-4 right-4 bg-green-500/20 text-green-400 border border-green-500/30 text-xs font-mono font-bold px-3 py-1 rounded-full backdrop-blur">
+          ● Open 24/7
+        </span>
+      </div>
+      <div class="p-6">
+        <h3 id="branchTitle" class="text-xl font-bold mb-2">Downtown HQ (Main Branch)</h3>
+        <p id="branchAddress" class="text-zinc-400 text-sm mb-4">124 Central Ave, City Center</p>
+        
+        <div class="grid grid-cols-2 gap-4 text-xs font-medium pt-4 border-t border-zinc-800">
+          <div>
+            <span class="text-zinc-500 block">Key Equipment</span>
+            <span id="branchAmenities" class="text-zinc-200 font-semibold">Sauna, Turf Zone, Heavy Lifting</span>
+          </div>
+          <div>
+            <span class="text-zinc-500 block">Direct Phone</span>
+            <span id="branchPhone" class="text-zinc-200 font-semibold">+1 (800) 555-0199</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Facilities Section -->
+  <section class="py-12 bg-zinc-900/30 border-t border-zinc-800 px-4">
+    <div class="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="p-6 bg-zinc-900/80 border border-zinc-800 rounded-xl">
+        <div class="text-red-500 text-2xl font-black mb-2">01</div>
+        <h4 class="font-bold text-lg text-white mb-1">Free Weights & Racks</h4>
+        <p class="text-zinc-400 text-xs leading-relaxed">Full power racks, deadlift platforms, and dumbells up to 150 lbs.</p>
+      </div>
+      <div class="p-6 bg-zinc-900/80 border border-zinc-800 rounded-xl">
+        <div class="text-red-500 text-2xl font-black mb-2">02</div>
+        <h4 class="font-bold text-lg text-white mb-1">Functional Turf</h4>
+        <p class="text-zinc-400 text-xs leading-relaxed">Dedicated sled tracks, kettlebells, and plyometric equipment.</p>
+      </div>
+      <div class="p-6 bg-zinc-900/80 border border-zinc-800 rounded-xl">
+        <div class="text-red-500 text-2xl font-black mb-2">03</div>
+        <h4 class="font-bold text-lg text-white mb-1">Cardio Deck</h4>
+        <p class="text-zinc-400 text-xs leading-relaxed">Concept2 rowers, SkiErgs, Assault bikes, and precision treadmills.</p>
+      </div>
+      <div class="p-6 bg-zinc-900/80 border border-zinc-800 rounded-xl">
+        <div class="text-red-500 text-2xl font-black mb-2">04</div>
+        <h4 class="font-bold text-lg text-white mb-1">Recovery Suites</h4>
+        <p class="text-zinc-400 text-xs leading-relaxed">Infrared saunas, cold plunge options, and dedicated locker areas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Class Schedule Section -->
+  <section id="schedule" class="py-16 bg-zinc-900/50 border-y border-zinc-800/80 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-8">
+        <h2 class="text-3xl font-black uppercase tracking-tight">Daily <span class="text-red-600">Class Schedule</span></h2>
+        <p class="text-zinc-400 text-sm mt-1">Select a branch above to filter session times for your location.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6" id="scheduleCards"></div>
+    </div>
+  </section>
+
+  <!-- Contact & Inquiry Form Section -->
+  <section id="contact" class="py-16 px-4 max-w-3xl mx-auto">
+    <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 md:p-10 shadow-2xl">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-black uppercase">Get In <span class="text-red-600">Touch</span></h2>
+        <p class="text-zinc-400 text-sm mt-2">Have questions about memberships, personal training, or scheduling? Send us a message.</p>
+      </div>
+
+      <form id="contactForm" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-zinc-400 mb-1">Full Name</label>
+          <input type="text" required placeholder="John Doe" class="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-red-600 transition" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-zinc-400 mb-1">Email / Phone</label>
+          <input type="text" required placeholder="name@example.com or phone" class="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-red-600 transition" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-zinc-400 mb-1">Preferred Location</label>
+          <select id="formBranch" class="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-red-600 transition">
+            <option value="downtown">Downtown HQ</option>
+            <option value="uptown">Uptown Fitness Hub</option>
+            <option value="metro">North Metro Arena</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-zinc-400 mb-1">Message</label>
+          <textarea rows="3" placeholder="Tell us what you're looking for..." class="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-red-600 transition"></textarea>
+        </div>
+        <button type="submit" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-4 rounded-lg uppercase tracking-wider text-sm transition mt-2">
+          Send Message
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Sticky Mobile Action Bar -->
+  <div class="fixed bottom-0 left-0 right-0 bg-zinc-900/95 backdrop-blur border-t border-zinc-800 p-3 flex gap-2 md:hidden z-50">
+    <a id="mobileMapBtn" href="https://maps.app.goo.gl/fQ7EiaXLN5NbWVif7" target="_blank" rel="noopener noreferrer" class="flex-1 bg-zinc-800 border border-zinc-700 text-center py-3 rounded-xl font-bold text-xs flex items-center justify-center gap-1 text-zinc-200">
+      📍 Directions
+    </a>
+    <a href="#contact" class="flex-1 bg-red-600 text-center py-3 rounded-xl font-bold text-xs text-white">
+      ✉️ Contact Studio
+    </a>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
