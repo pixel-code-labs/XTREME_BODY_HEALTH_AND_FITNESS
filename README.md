@@ -14,15 +14,15 @@ A fast, responsive, and mobile-optimized multi-branch fitness platform for **Xtr
 - 📅 **Localized Class Schedules:** Interactive schedule board that automatically updates session times and trainer info based on the selected gym branch.
 - 🗺️ **Direct Navigation & Local SEO:** Built-in Google Maps navigation links and structured Schema.org JSON-LD data for enhanced local search visibility.
 - 📱 **Mobile-First Sticky Bar:** Floating bottom action bar on mobile devices for instant one-tap directions and studio inquiries.
-- ✉️ **Inquiry & Booking Form:** Clean contact form pre-filled with location preferences for direct client engagement.
+- ✉️️ **Inquiry & Booking Form:** Clean contact form pre-filled with location preferences for direct client engagement.
 
 ---
 
 ## 🛠️ Tech Stack
 
 - **Markup:** HTML5 (Semantic Structure & Accessibility)
-- **Styling:** Tailwind CSS (CDN) + Custom `style.css`
-- **Scripting:** Pure ES6+ JavaScript (Zero external dependencies)
+- **Styling:** Tailwind CSS (CDN) + Custom `css/style.css`
+- **Scripting:** Pure ES6+ JavaScript (`js/script.js`)
 - **SEO & Data:** Schema.org (`ExerciseGym` JSON-LD)
 
 ---
@@ -31,7 +31,12 @@ A fast, responsive, and mobile-optimized multi-branch fitness platform for **Xtr
 
 ```text
 client-xtreme-gym/
-├── index.html     # Main web application & SEO metadata
-├── style.css      # Custom animations & scrollbar overrides
-├── script.js     # State management for multi-branch switching
-└── README.md      # Repository documentation
+├── .github/
+│   └── workflows/
+│       └── release.yml   # Automated GitHub release action
+├── css/
+│   └── style.css        # Custom styles & scrollbar overrides
+├── js/
+│   └── script.js        # Dynamic location switcher & interactivity
+├── index.html           # Main web application & SEO metadata
+└── README.md            # Repository documentation
